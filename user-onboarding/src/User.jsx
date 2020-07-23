@@ -4,7 +4,7 @@ function User(props) {
   const { user } = props;
   // catch error
   if (!user) {
-    return <h3>Working fetching your team members&apos;s details...</h3>;
+    return <h3>Working fetching your User&apos;s details...</h3>;
   }
 
   return (

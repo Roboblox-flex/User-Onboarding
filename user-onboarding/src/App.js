@@ -12,7 +12,6 @@ const initialUsers = [
     name: "Gabe",
     email: "gabe@gabe.com",
     // password: "kashflakjsf",
-    terms: false,
   },
 ];
 const initialFormValues = {
@@ -35,15 +34,11 @@ function App() {
   const [formErrors, setFormErrors] = useState(initialFormErrors);
   const [disabled, setDisabled] = useState(initialDisabled);
 
-  const getUsers = () => {
-    return users;
-  };
-
   const postNewUser = (newUser) => {
     axios
       .post("https://reqres.in/api/users", newUser)
-      .then((response) => {
-        setUsers([...users, response.data]);
+      .then((res) => {
+        setUsers([...users, res.data]);
       })
       .catch((error) => {
         debugger;
@@ -66,7 +61,7 @@ function App() {
       .catch((err) => {
         setFormErrors({
           ...formErrors,
-          [name]: err.errors[0],
+          [name]: err.errors,
         });
       });
     setFormValues({
@@ -115,7 +110,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>User Onboarding</h1>
+      <h1>Please fill out this form</h1>
       <Form
         values={formValues}
         onInputChange={onInputChange}
